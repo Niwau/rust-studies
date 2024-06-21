@@ -6,6 +6,8 @@
         - Um valor só pode ter um dono por vez.
         - Quando o dono sai do escopo, o valor é descartado.
     4. No entanto, alguns tipos de dados são copiados por padrão em vez de serem movidos.
+    5. O conceito de Ownership também se aplica a funções.
+    6. O Owner é parecido com um ponteiro, mas com algumas regras adicionais.
 */
 
 fn main() {
@@ -27,5 +29,29 @@ fn main() {
     let y = x;
     println!("x = {}, y = {}", x, y);
 
-    
+    // Funções
+    let s5 = String::from("hello");
+
+    fn owner(t: String) {
+        println!("{}", t);
+    }
+
+    owner(s5); // s5 foi movido para a função owner, portanto, s5 não é mais válido
+    // println!("{}", s5); // s5 não é mais válido
+
+    // Retornando Ownership
+
+    let s5 = String::from("hello");
+
+    fn owner2(mut a: String) -> String {
+        a.push_str(" world");
+        a
+    }
+
+    let s6 = owner2(s5);
+
+    // s5 não é mais válido porque o Owner foi transferido para s6
+
+    println!("{}", s6);  
+
 }
