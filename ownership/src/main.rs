@@ -8,6 +8,7 @@
     4. No entanto, alguns tipos de dados são copiados por padrão em vez de serem movidos.
     5. O conceito de Ownership também se aplica a funções.
     6. O Owner é parecido com um ponteiro, mas com algumas regras adicionais.
+    7. Também temos o conceito de Borrowing, que é uma forma de emprestar um valor sem transferir a propriedade.
 */
 
 fn main() {
@@ -52,6 +53,18 @@ fn main() {
 
     // s5 não é mais válido porque o Owner foi transferido para s6
 
-    println!("{}", s6);  
+    println!("{}", s6);
+
+    // Borrowing
+    // Estamos passando uma referência para a função owner3 em vez de passar o valor, portanto, s7 ainda é válido
+    let s7 = String::from("hello");
+
+    fn owner3(a: &String) {
+        println!("{}", a);
+    }
+
+    owner3(&s7); // s7 foi emprestado para a função owner3, portanto, s7 ainda é válido
+
+
 
 }
