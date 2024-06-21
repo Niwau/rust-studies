@@ -4,6 +4,7 @@ fn main() {
      * 2. Para tornar uma variável mutável, utilize a palavra-chave `mut`
      * 3. Shadowing: você pode declarar uma nova variável com o mesmo nome de uma variável anterior
      * 4. Scope: variáveis são válidas apenas dentro do seu escopo
+     * 5. Printf-style: você pode utilizar a macro `println!` para imprimir valores
      */
 
     // 1. Variáveis são imutáveis por padrão (não é possível reatribuir um valor a uma variável)
@@ -28,4 +29,10 @@ fn main() {
     }
     
     // println!("O valor de b é: {}", b); // Erro: b não está mais em escopo
+
+    // 5. Printf-style: você pode utilizar a macro `println!` para imprimir valores
+    let c = 40;
+    
+    // Equivalente a println!("O valor de c é: {}", c)
+    println!("O valor de c é: {c}"); 
 }
